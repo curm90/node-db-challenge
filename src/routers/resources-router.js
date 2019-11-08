@@ -40,4 +40,15 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const deleted = await Resources.delete(req.params.id);
+    res.status(200).json(`${deleted} resource was removed successfully`);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: 'request could not be processed ' + error.message });
+  }
+});
+
 module.exports = router;

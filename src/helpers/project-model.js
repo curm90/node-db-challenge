@@ -14,7 +14,7 @@ module.exports = {
   add(project) {
     return db('projects')
       .insert(project)
-      .then(() => this.getProjects());
+      .then(id => this.getById(id));
   },
 
   update(id, updated) {

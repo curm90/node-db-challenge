@@ -14,6 +14,12 @@ module.exports = {
   add(resource) {
     return db('resources')
       .insert(resource)
-      .then(() => this.getResources());
+      .then(id => this.getById(id));
+  },
+
+  delete(id) {
+    return db('resources')
+      .where({ id: id })
+      .del();
   }
 };
